@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="css/admin.css" media="all" />
+	<title>article_list</title>
+</head>
+<body>
+		<!-- 头部 s-->
+		<div class="header clearfix">
+			<h1 class="fl"><a href="#">Control Panel</a></h1>
+			<div class="user_option fr">
+				<span>下午好，<em><a href="#">Administrator</a></em></span>
+				<span class="more">a</span>
+				<span class="talking"></span>
+				<span class="setting"></span>
+			</div>
+		</div>
+		<!-- 头部 e-->
+		<div class="main clearfix">
+			<!-- 侧栏 -->
+			<div class="sidebar fl">
+				<h2 class="common_tit">控制板<i></i> </h2>
+				<ul class="common_ul">
+					<li><a href="">统计信息</a></li>
+					<li class="current"><a href="">设置中心</a></li>
+					<li><a href="">系统分析</a></li>
+				</ul>
+				<h2 class="common_tit">设置<i></i> </h2>
+				<ul class="common_ul">
+					<li><a href="">常规</a></li>
+					<li class="current"><a href="">工具设置</a></li>
+					<li><a href="">可用工具</a></li>
+				</ul>
+				<h2 class="common_tit s_bg">文章管理</h2>
+				<h2 class="common_tit s_bg">评论</h2>
+				<h2 class="common_tit">插件应用<i></i> </h2>
+				<ul class="common_ul last">
+					<li><a href="">安装插件</a></li>
+					<li><a href="">编辑</a></li>
+					<li><a href="">应用配置</a></li>
+				</ul>
+			</div>
+			<!-- 主内容 -->
+			<div class="content">
+				<!-- 内容标题 -->
+				<div class="content_tit clearfix">
+					<h1 class="name fl">文章列表</h1>
+					<div class="fr option">
+						<a href="">统计信息</a>
+						<a href="" class="sign">设置中心</a>
+						<a href="">系统分析</a>
+					</div>
+				</div>
+				<!-- 搜索条件 -->
+				<div class="content_search_option">
+					<p class="op1">
+						<select name="" id=""> <option value="">按频道</option> </select>
+						<select name="" id=""> <option value="">按分类</option> </select>
+						<select name="" id=""> <option value="">按状态</option> </select>
+					</p>
+					<p class="op2 clearfix">
+						<label for="key" class="key fl">关键词 <input type="" id="key" /></label>
+						<span class="detail_key fr">
+							<label for="s"><input type="checkbox" name="" id="s" class="fix_align" />&nbsp;精确查找
+							</label>&nbsp;&nbsp; <select name="" id="">
+								<option value="">仅按文章标题</option>
+							</select>
+							<span class="btn_search">搜索</span>
+						</span>
+					</p>
+				</div>
+				<!-- 文章列表 -->
+				<div class="article_list">
+					<table cellspacing="0" cellpadding="0">
+						<tr>
+							<th width="4%">#</th>
+							<th>标题</th>
+							<th width="5%">浏览</th>
+							<th width="7%">留言</th>
+							<th width="10%">作者</th>
+							<th width="10%">日期<i class="arr_down"></i></th>
+							<th width="9%">分类</th>
+							<th width="4%">状态</th>
+							<th width="5%"> <input type="checkbox" name="" id="" /> </th>
+						</tr>
+						<tr>
+							<td class="center">2928</td>
+							<td><a href="#">可口可乐：失败的新配方</a></td>
+							<td>....</td>
+							<td class="center"><a href="#">(0)</a> View </td>
+							<td>杜萌</td>
+							<td class="center">2012-01-18 09:30</td>
+							<td>stories</td>
+							<td class="center"><a href="#">公开</a></td>
+							<td class="center">
+								<input type="checkbox" name="" id="" />
+							</td>	
+						</tr><tr>
+							<td class="center">2928</td>
+							<td><a href="#">可口可乐：失败的新配方</a></td>
+							<td>....</td>
+							<td class="center"><a href="#">(0)</a> View </td>
+							<td>杜萌</td>
+							<td class="center">2012-01-18 09:30<i></i></td>
+							<td>stories</td>
+							<td class="center"><a href="#">公开</a></td>
+							<td class="center">
+								<input type="checkbox" name="" id="" />
+							</td>	
+						</tr><tr>
+							<td class="center">2928</td>
+							<td><a href="#">可口可乐：失败的新配方</a></td>
+							<td>....</td>
+							<td class="center"><a href="#">(0)</a> View </td>
+							<td>杜萌</td>
+							<td class="center">2012-01-18 09:30<i></i></td>
+							<td>stories</td>
+							<td class="center"><a href="#">公开</a></td>
+							<td class="center">
+								<input type="checkbox" name="" id="" />
+							</td>	
+						</tr><tr>
+							<td class="center">2928</td>
+							<td><a href="#">可口可乐：失败的新配方</a></td>
+							<td>....</td>
+							<td class="center"><a href="#">(0)</a> View </td>
+							<td>杜萌</td>
+							<td class="center">2012-01-18 09:30<i></i></td>
+							<td>stories</td>
+							<td class="center"><a href="#">公开</a></td>
+							<td class="center">
+								<input type="checkbox" name="" id="" />
+							</td>	
+						</tr>
+
+					</table>
+				</div>
+
+				<!-- 分页部分 -->
+				<div class="splite_page clearfix">
+					<div class="page fl">
+						<a href="" class="prev"></a>
+						<a href="" class="prevs"></a>
+						<span class="fl">第1到第50条</span>
+						<a href="" class="next"></a>
+						<a href="" class="nexts"></a>
+						<strong class="fl">共2104个项目</strong>
+					</div>
+					<select name="" id="" class="fr select_style">
+						<option value="">批量操作</option>
+					</select>
+				</div>
+				<!-- footer -->
+				<div class="clearfix footer">
+					<strong class="fl">Control Panel V1.5.1</strong>
+					<strong class="fr mob">Mobile</strong>
+				</div>
+				
+			</div>
+
+		</div>
+		<script type="text/javascript" src="js/lib/sea.js" data-main="./js/init.js"></script>
+</body>
+</html>

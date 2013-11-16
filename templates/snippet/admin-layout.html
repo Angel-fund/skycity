@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}天空之城{% endblock %}</title>
+    <script type="text/javascript" src="/static/js/base/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/static/js/sea-modules/bootstrap.min.js"></script>
+    <!--script type="text/javascript" src="/static/js/base/in-min.js"></script-->
+    <!-- <link rel="stylesheet" href="/static/css/bootstrap/bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="/static/css/main.css" /> -->
+    
+    <!--[if lt IE 9]>
+        <script src="static/js//html5shiv.js?1.2.1"></script>
+    <![endif]-->
+    <!--[if IE 8]>
+        <script src="/assets/libs/respond.min.js?1.2.1"></script>
+    <![endif]-->
+
+    <!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" media="all" /> -->
+    <link rel="stylesheet" type="text/css" href="/static/css/site.css" media="all" />
+    <!-- <link rel="stylesheet" type="text/css" href="/static/css/admin.css" media="all" /> -->
+    <script src="/static/js/sea-modules/seajs/2.1.1/sea.js" id="seajsnode"></script>
+    {% block stylesheet %}{% endblock %}
+    {% block javascript %}{% endblock %}   
+    <script type="text/javascript" src="/static/js/widget/jquery.scrolltotop-min.js"></script> 
+</head>
+<body>
+    <header id="header" class="navbar">
+        <ul class="nav navbar-nav navbar-avatar pull-right">
+            <li class="dropdown">
+                <a href="http://flatfull.com/themes/first/table.html#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="hidden-xs-only">Mika Sokeil</span>
+                    <span class="thumb-small avatar inline">
+                        <img src="/static/avatar/avatar.jpg" alt="Mika Sokeil" class="img-circle"></span> <b class="caret hidden-xs-only"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="http://flatfull.com/themes/first/table.html#">Settings</a>
+                    </li>
+                    <li>
+                        <a href="http://flatfull.com/themes/first/table.html#">Profile</a>
+                    </li>
+                    <li>
+                        <a href="http://flatfull.com/themes/first/table.html#">
+                            <span class="badge bg-danger pull-right">3</span>
+                            Notifications
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="http://flatfull.com/themes/first/docs.html">Help</a>
+                    </li>
+                    <li>
+                        <a href="http://flatfull.com/themes/first/signin.html">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <a class="navbar-brand" href="http://flatfull.com/themes/first/table.html#">first</a>
+        <button type="button" class="btn btn-link pull-left nav-toggle visible-xs" data-toggle="class:slide-nav slide-nav-left" data-target="body"> <i class="icon-reorder icon-xlarge text-default"></i>
+        </button>
+        <ul class="nav navbar-nav hidden-xs">
+            <li>
+                <div class="m-t m-b-small" id="panel-notifications">
+                    <a href="http://flatfull.com/themes/first/table.html#" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-comment-alt icon-xlarge text-default"></i> <b class="badge badge-notes bg-danger count-n" style="display: block; ">8</b>
+                    </a>
+                    <section class="dropdown-menu m-l-small m-t-mini">
+                        <section class="panel panel-large arrow arrow-top">
+                            <header class="panel-heading bg-white">
+                                <span class="h5"> <strong>You have
+                                        <span class="count-n" style="display: inline; ">8</span>
+                                        notifications</strong> 
+                                </span>
+                            </header>
+                            <div class="list-group">
+                                <a href="timeline.html" class="media list-group-item" style="display: block; ">
+                                    <span class="pull-left thumb-small">
+                                        <i class="icon-time icon-2x text-default"></i>
+                                    </span>
+                                    <span class="media-body block m-b-none">
+                                        Added the timeline, view it here.
+                                        <br>
+                                        <small class="text-muted">1 minute ago</small>
+                                    </span>
+                                </a>
+                                <a href="calendar.html" class="media list-group-item" style="display: block; ">
+                                    <span class="pull-left thumb-small">
+                                        <i class="icon-calendar icon-2x text-default"></i>
+                                    </span>
+                                    <span class="media-body block m-b-none">
+                                        Added the calendar, Get it.
+                                        <br>
+                                        <small class="text-muted">10 July 13</small>
+                                    </span>
+                                </a>
+                                <a href="mail.html" class="media list-group-item" style="display: block; ">
+                                    <span class="pull-left thumb-small">
+                                        <i class="icon-envelope-alt icon-2x text-default"></i>
+                                    </span>
+                                    <span class="media-body block m-b-none">
+                                        Added the mail app, Check it out.
+                                        <br>
+                                        <small class="text-muted">2 July 13</small>
+                                    </span>
+                                </a>
+                                <a href="http://flatfull.com/themes/first/timeline.html" class="media list-group-item" style="display: block; ">
+                                    <span class="pull-left thumb-small">
+                                        <i class="icon-time icon-2x text-default"></i>
+                                    </span>
+                                    <span class="media-body block m-b-none">
+                                        Added the timeline, view it here.
+                                        <br>
+                                        <small class="text-muted">1 minute ago</small>
+                                    </span>
+                                </a>
+                                <a href="http://flatfull.com/themes/first/calendar.html" class="media list-group-item" style="display: block; ">
+                                    <span class="pull-left thumb-small">
+                                        <i class="icon-calendar icon-2x text-default"></i>
+                                    </span>
+                                    <span class="media-body block m-b-none">
+                                        Added the calendar, Get it.
+                                        <br>
+                                        <small class="text-muted">10 July 13</small>
+                                    </span>
+                                </a>
+                                <a href="http://flatfull.com/themes/first/mail.html" class="media list-group-item" style="display: block; ">
+                                    <span class="pull-left thumb-small">
+                                        <i class="icon-envelope-alt icon-2x text-default"></i>
+                                    </span>
+                                    <span class="media-body block m-b-none">
+                                        Added the mail app, Check it out.
+                                        <br>
+                                        <small class="text-muted">2 July 13</small>
+                                    </span>
+                                </a>
+                                <a href="http://flatfull.com/themes/first/table.html#" class="media list-group-item">
+                                    <span class="pull-left thumb-small">
+                                        <img src="/static/avatar/avatar.jpg" alt="John said" class="img-circle" data-pinit="registered"></span>
+                                    <span class="media-body block m-b-none">
+                                        Moved to Bootstrap 3.0
+                                        <br>
+                                        <small class="text-muted">23 June 13</small>
+                                    </span>
+                                </a>
+                                <a href="http://flatfull.com/themes/first/table.html#" class="media list-group-item">
+                                    <span class="media-body block m-b-none">
+                                        first v.1 (Bootstrap 2.3 based) released
+                                        <br>
+                                        <small class="text-muted">19 June 13</small>
+                                    </span>
+                                </a>
+                            </div>
+                            <footer class="panel-footer text-small">
+                                <a href="#" class="pull-right">
+                                    <i class="icon-cog"></i>
+                                </a>
+                                <a href="#">See all the notifications</a>
+                            </footer>
+                        </section>
+                    </section>
+                </div>
+            </li>
+            <li>
+                <div class="m-t-small">
+                    <a class="btn btn-sm btn-info" data-toggle="modal" href="#modal">
+                        <i class="icon-plus"></i>
+                        POST
+                    </a>
+                </div>
+            </li>
+            <li class="dropdown shift" data-toggle="shift:appendTo" data-target=".nav-primary .nav">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-cog icon-xlarge visible-xs visible-xs-inline"></i>
+                    Settings
+                    <b class="caret hidden-sm-only"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#" data-toggle="class:navbar-fixed" data-target="body">
+                            Navbar
+                            <span class="text-active">auto</span>
+                            <span class="text">fixed</span>
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="http://flatfull.com/themes/first/table.html#" data-toggle="class:nav-vertical" data-target="#nav">
+                            Nav
+                            <span class="text-active">vertical</span>
+                            <span class="text">horizontal</span>
+                        </a>
+                    </li>
+                    <li class="divider hidden-xs"></li>
+                    <li class="dropdown-header">Colors</li>
+                    <li>
+                        <a href="http://flatfull.com/themes/first/table.html#" data-toggle="class:bg bg-black" data-target=".navbar">
+                            Navbar
+                            <span class="text-active">white</span>
+                            <span class="text">inverse</span>
+                        </a>
+                    </li>                
+                </ul>
+            </li>
+        </ul>
+        <form class="navbar-form pull-left shift" action="" data-toggle="shift:appendTo" data-target=".nav-primary">
+            <i class="icon-search text-muted"></i>
+            <input type="text" class="input-sm form-control" placeholder="Search"></form>
+    </header>   
+<!-- 头部 end-->
+   
+    <!-- 侧栏 -->
+    <nav id="nav" class="nav-primary hidden-xs nav-vertical">
+        <ul class="nav affix" data-spy="affix" data-offset-top="50">
+            <li class="dropdown-submenu">
+                <a href="http://flatfull.com/themes/first/table.html#"> <i class="icon-th icon-xlarge"></i>
+                    <span>控制板</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li {% if menu == 'menu' %}class="current"{% endif %} >
+                        <a href="#">统计信息</a>
+                    </li>
+                    <li {% if menu == 'seting' %}class="current"{% endif %} >
+                        <a href=""> <b class="badge pull-right">302</b>
+                            设置中心
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href=""> <b class="badge pull-right">18</b>
+                            系统分析
+                        </a>
+                    </li>      
+                </ul>
+            </li>
+
+            <li class="dropdown-submenu">
+                <a href="http://flatfull.com/themes/first/table.html#"> <i class="icon-list icon-xlarge"></i>
+                    <span>设置</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li {% if menu == 'menu' %}class="current"{% endif %} >
+                        <a href="#">常规</a>
+                    </li>
+                    <li {% if menu == 'seting' %}class="current"{% endif %} >
+                        <a href=""> <b class="badge pull-right">302</b>
+                            工具设置
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href=""> <b class="badge pull-right">18</b>
+                            可用工具
+                        </a>
+                    </li>      
+                </ul>
+            </li>
+            <li class="icon-th icon-xlarge">文章管理</li>
+            <li class="icon-th icon-xlarge">评论</li>
+            <li class="icon-th icon-xlarge">插件应用</li>
+        </ul> 
+    </nav> 
+    <!-- 主内容 -->
+    <section id="content">
+        <section class="main padder">            
+            <!-- 内容标题 -->  
+             <div class="clearfix">         
+                {% block content_tit %}{% endblock %}
+            </div>
+            <div class="row"> 
+                <div class="col-lg-12"> 
+                    {% block content_mod %}{% endblock %}
+                </div>
+            </div>            
+        </section>
+    </section> 
+    <!-- footer -->
+    <footer id="footer">
+        <div class="text-center padder clearfix">
+            <strong>© copyRight 天空之城 Control Panel V1.1.0</strong>            
+        </div>
+    </footer>
+<script>
+    seajs.use('/static/js/app.js', function(app){
+        console.log(app);
+    });
+</script>
+</body>
+</html>
