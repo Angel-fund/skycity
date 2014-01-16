@@ -14,12 +14,12 @@
         <header class="panel-heading"> 项目列表 </header>
         <div class="panel-body"> 
             <div class="row text-small"> 
-                <div class="col-sm-4 m-b-mini">                    
+                <div class="col-sm-4 m-b-mini">                
                     <select class="input-sm inline form-control" style="width:130px">
                         <option value="0">选择分类</option>
-                        <option value="1">Delete selected</option>
-                        <option value="2">Bulk edit</option>
-                        <option value="3">Export</option>
+                        {% for item in category %}                           
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endfor %}                         
                     </select>
                 </div>
                 <div class="col-sm-4">
@@ -40,8 +40,7 @@
                     <tr>
                         <th width="4%">#</th>
                         <th>标题</th>
-                        <th width="5%">浏览</th>
-                        <th width="7%">留言</th>
+                        <th width="5%">浏览</th>                       
                         <th width="10%">作者</th>
                         <th width="10%">日期<i class="arr_down"></i></th>
                         <th width="9%">分类</th>
@@ -54,11 +53,10 @@
                     <tr>
                         <td class="center">{{ project.id }}</td>
                         <td><a href="admin/project/edit/{{ project.id }}">{{ project.title }}</a></td>
-                        <td>....</td>
-                        <td class="center"><a href="#">(0)</a> View </td>
+                        <td>{{ project.hits }}</td>                        
                         <td>杜萌</td>
-                        <td class="center">2012-01-18 09:30</td>
-                        <td>stories</td>
+                        <td class="center">{{ project.createTime }}</td>
+                        <td>{{ project.name }}</td>
                         <td class="center"><a href="#">公开</a></td>
                         <td class="center">
                             <input type="checkbox" name="" id="" />

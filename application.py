@@ -83,6 +83,7 @@ class Application(tornado.web.Application):
             
             (r"/admin", handler.admin.IndexHandler),
             (r"/admin/project/edit/(\d+)", handler.admin.ProjectEditHandler),
+            (r"/admin/project/add", handler.admin.ProjectAddHandler),
 
             (r"/(favicon\.ico)", tornado.web.StaticFileHandler, dict(path = settings["static_path"])),
             (r"/(sitemap.*$)", tornado.web.StaticFileHandler, dict(path = settings["static_path"])),

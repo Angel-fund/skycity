@@ -90,7 +90,7 @@ class SettingForm(Form):
     ])
     website = TextField('Website', [
         validators.Optional(),
-        validators.URL(message = "请填写合法的URL地址（如：http://f2e.im）")
+        validators.URL(message = "请填写合法的URL地址（如：http://flower.com）")
     ])
     company = TextField('Company', [
         validators.Optional(),

@@ -31,15 +31,26 @@ class Filters():
 
     def dump_errors(self, errors):
         t = self.jinja2.from_string("""
-            {% if errors %}
-            <ul class="errors alert alert-error">
-                {% for error in errors %}
-                    <li>{{ ','.join(errors[error]) }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
+                {% if errors %}
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert"> <i class="icon-remove"></i>
+                        </button>
+                        <ul>
+                            {% for error in errors %}
+                                <li class="icon-ban-circle icon-large">{{ ','.join(errors[error]) }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
             """)
-
+        # {% if errors %}
+        #     <ul class="errors alert alert-error">
+        #         {% for error in errors %}
+        #             <li>{{ ','.join(errors[error]) }}</li>
+        #         {% endfor %}
+        #     </ul>
+        #     {% endif %}
+       
         return t.render(errors = errors)
 
     def pagination(self, page, uri, list_rows = 10):

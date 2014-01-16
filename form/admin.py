@@ -14,7 +14,29 @@ class Project(Form):
     ])
 
     title = TextField('Title', [
-        validators.Required(message = "请填写帖子标题"),
+        validators.Required(message = "请填写标题"),
         validators.Length(min = 3, message = "帖子标题长度过短（3-56个字符）"),
         validators.Length(max = 56, message = "帖子标题长度过长（3-56个字符）"),
+    ])
+    area = TextField('Area', [
+        validators.Optional(),
+    ])
+    cost = TextField('Cost', [
+        validators.Optional(),
+    ])
+    category = TextField('Category', [
+        validators.Required(message = "请选择分类"),
+        validators.Optional(),
+    ])
+    description = TextField('Description', [
+        validators.Optional(),
+    ])
+    thumb = TextField('Thumb', [
+        validators.Optional(),
+    ])
+    material = TextField('Material', [
+        validators.Optional(),
+    ])
+    hits = TextField('Hits', [
+        validators.Optional(),
     ])

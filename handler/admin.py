@@ -4,7 +4,6 @@
 # Copyright 2012 F2E.im
 # Do have a faith in what you're doing.
 # Make your life a story worth telling.
-
 import uuid
 import hashlib
 import Image
@@ -17,11 +16,13 @@ import urllib
 import tornado.web
 import lib.jsonp
 
+from config import Config
 from base import *
 from lib.sendmail import send
 from lib.variables import gen_random
 from lib.gravatar import Gravatar
 from form.admin import *
+from lib.validate_code import create_validate_code
 
 def do_login(self, user_id):
     user_info = self.user_model.get_user_by_uid(user_id)
@@ -49,57 +50,125 @@ class IndexHandler(BaseHandler):
     def get(self,template_variables = {}):      
         user_info = self.get_current_user()
         project_model = self.loader.use("project.model")
+        category_model = self.loader.use("category.model")  
+
         page = int(self.get_argument("p", "1"))
         template_variables["user_info"] = user_info       
         template_variables["project"] = project_model.get_all_project(current_page = page)
+        template_variables["category"] = category_model.get_category('project')
         self.render("admin/index.html", **template_variables)
 
-class ProjectEditHandler(BaseHandler):
-    # self.project_model = self.loader.use("project.model")
+class ProjectEditHandler(BaseHandler): 
     @tornado.web.authenticated
-    def get(self, project_id, template_variables = {}):
-        dd = [1,2,7,4,5]
-        project_model = self.loader.use("project.model")
-        # self.write(project_id)
-        # user_info = self.get_current_user()
-        # template_variables["user_info"] = user_info
+    def get(self, project_id, template_variables = {}): 
+        url = self.request.uri
+        url = url.split('/')
+        print url[len(url)-1]
+
+        # font_type = Config.font_path
+        # validate_code_img = '%svalidate.png' % Config.validate_code_path
+        # code_img = create_validate_code(size=(180, 45),font_size=30,font_type=font_type,img_type='PNG')
+        # code_img[0].save(validate_code_img, "PNG")
+        # print code_img[1] 
+
+        project_model = self.loader.use("project.model")        
+        category_model = self.loader.use("category.model")        
+
         template_variables["project"] = project_model.get_by_project_id(project_id)
+        template_variables["category"] = category_model.get_category('project')
         self.render("admin/project/edit.html", **template_variables)
 
     @tornado.web.authenticated
     def post(self, project_id,template_variables = {}):
-        template_variables = {}
         project_model = self.loader.use("project.model")
-
         # validate the fields
         form = Project(self)
-
         if not form.validate():
             self.get({"errors": form.errors})
             return
         # self.write(form.content.data)
-        self.write(project_id)
+        # self.write(project_id)
         user_info = self.current_user
         template_variables = {
             "content": form.content.data,
             "title": form.title.data,
-            "area": 200,
-            "cost": 10000,
-            "type": 1,
-            "description": 'description',
+            "area": form.area.data,
+            "cost": form.cost.data,
+            "cid": form.category.data,
+            "description": form.description.data,
             "thumb": 'http://p.www.xiaomi.com/zt/2013/mi3/detail-bn-950.jpg',
             "material": '砖混结构',
             "userid": user_info["uid"],
-            "hits": 200,
+            "hits": form.hits.data,
             "createTime": time.strftime('%Y-%m-%d %H:%M:%S')
         }
-                
-        update_result = project_model.update_project_by_id(project_id, template_variables)
-
-        template_variables["success_message"] = [u"用户基本资料更新成功"]
-        # # update `updated`
+        # print ', '.join(['%s:%s' % item for item in form.__dict__.items()])
+        try:
+            update_result = project_model.update_project_by_id(project_id, template_variables)
+            template_variables["success_message"] = [u"用户基本资料更新成功"]
+        except Exception, e: 
+            template_variables["error_message"] = [u"用户基本资料更新失败"]
+        
         # updated = self.user_model.set_user_base_info_by_uid(user_info["uid"], {"updated": time.strftime('%Y-%m-%d %H:%M:%S')})
+        
         self.get(project_id,template_variables)
+
+class ProjectAddHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self,template_variables = {}):
+        category_model = self.loader.use("category.model")  
+        if not template_variables:           
+            template_variables["project"] = dict(
+                        title = '',
+                        hits = '',
+                        area = '',
+                        cost = '',
+                        description = '',
+                        content = ''
+                    ) 
+        template_variables["category"] = category_model.get_category('project')
+
+        self.render("admin/project/edit.html", **template_variables)
+    
+    @tornado.web.authenticated
+    def post(self, template_variables = {}):
+        project_model = self.loader.use("project.model")
+        # validate the fields
+        form = Project(self)
+
+        # self.write(form.content.data)
+        # self.write(project_id)
+        user_info = self.current_user
+        template_variables["project"] = {
+            "content": form.content.data,
+            "title": form.title.data,
+            "area": form.area.data,
+            "cost": form.cost.data,
+            "cid": form.category.data,
+            "description": form.description.data,
+            "thumb": 'http://p.www.xiaomi.com/zt/2013/mi3/detail-bn-950.jpg',
+            "material": '砖混结构',
+            "userid": user_info["uid"],
+            "hits": form.hits.data,
+            "createTime": time.strftime('%Y-%m-%d %H:%M:%S')
+        }
+
+        if not form.validate():
+            # self.get({"errors": form.errors})
+            template_variables["errors"]= form.errors
+            print form.errors
+            self.get(template_variables)
+            return
+        # print ', '.join(['%s:%s' % item for item in form.__dict__.items()])
+        try:
+            update_result = project_model.add_project(template_variables["project"])
+            template_variables["success_message"] = [u"项目添加成功"]
+        except Exception, e: 
+            template_variables["error_message"] = [u"项目添加失败"]
+        
+        # updated = self.user_model.set_user_base_info_by_uid(user_info["uid"], {"updated": time.strftime('%Y-%m-%d %H:%M:%S')})
+        
+        self.get(template_variables)
 
 class SettingAvatarHandler(BaseHandler):
     @tornado.web.authenticated

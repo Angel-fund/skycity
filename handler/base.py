@@ -52,11 +52,7 @@ class BaseHandler(tornado.web.RequestHandler):
     @property
     def favorite_model(self):
         return self.application.favorite_model
-
-    # @property
-    # def project_model(self):
-    #     return self.application.project_model
-
+    
     @property
     def loader(self):
         return self.application.loader
@@ -70,9 +66,24 @@ class BaseHandler(tornado.web.RequestHandler):
         if not user_id: return None
         return self.user_model.get_user_by_uid(int(user_id))
 
+    #返回 locale 对象，以供当前用户使用
+    def get_user_locale(self):
+        pass 
+
+    #以字符串的形式 返回 HTML，以供错误页面使用
+    def get_error_html(self,status_code, exception=None, **kwargs):
+        pass     
+        
     def render(self, template_name, **template_vars):
         html = self.render_string(template_name, **template_vars)
         self.write(html)
+
+    # - 返回模板文件的路径（默认是 Application 中的设置）
+    def get_template_path(self):
+        pass
+    #返回登录网址，以供 @authenticated 装饰器使用（默认位置 在 Application 设置中）
+    def get_login_url(self) :
+        pass
 
     def render_string(self, template_name, **template_vars):
         template_vars["xsrf_form_html"] = self.xsrf_form_html
